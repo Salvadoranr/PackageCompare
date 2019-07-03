@@ -51,10 +51,12 @@ myapp.controller('MainCtrl', function ($scope, $http) {
 		$scope.merge();
 		for (let index = 0; index < $scope.datos.length; index++) {
 
-			for (var key in $scope.datos[index]) {
-				if ($scope.nuevo.hasOwnProperty(key)) {
+			for (var key in $scope.nuevo) {
+				if ($scope.datos[index].hasOwnProperty(key)) {
 
 					$scope.dependencies[key][`file_${index + 1}`] = $scope.datos[index][key];
+				}else{
+					$scope.dependencies[key][`file_${index + 1}`] = 'N/A'
 				}
 
 			}
